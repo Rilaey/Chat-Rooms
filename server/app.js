@@ -1,23 +1,23 @@
-const express = require('express')
-const cors = require('cors')
+const express = require("express");
 
-const app = express()
+const app = express();
 const port = 8080;
 
-// middleware
-app.use(cors({
+// create http server with the express app
+const server = require("http").createServer(app);
+
+// create the io instance with the http server and cors setting
+const io = require("socket.io")(server, {
+  cors: {
     origin: "*"
-}))
+  }
+});
 
-// start server with express and socket
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
-
-// io
+// io events
 io.on("connection", (socket) => {
-    console.log("a user connected")
-})
+  console.log("a user connected");
+});
 
 server.listen(port, () => {
-    console.log("server running!")
-})
+  console.log("server running!");
+});
