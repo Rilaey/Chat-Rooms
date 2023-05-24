@@ -1,0 +1,26 @@
+{
+  "name": "chat-rooms",
+  "version": "1.0.0",
+  "description": "tba",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"cd server && nodemon app.js\" \"cd client && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rilaey/Chat-Rooms.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rilaey/Chat-Rooms/issues"
+  },
+  "homepage": "https://github.com/Rilaey/Chat-Rooms#readme",
+  "dependencies": {
+    "concurrently": "^8.0.1",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22",
+    "socket.io": "^4.6.1"
+  }
+}
