@@ -17,6 +17,10 @@ const io = require("socket.io")(server, {
 io.on("connection", (socket) => {
   console.log("a user connected");
 
+  socket.on("new_chat", (data) => {
+    console.log(data)
+  })
+
   // listen for user disconnects
   socket.on("disconnect", () => {
     console.log("a user disconnected");

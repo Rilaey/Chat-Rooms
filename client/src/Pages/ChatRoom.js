@@ -1,6 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-export default function ChatRoom() {
+export default function ChatRoom({ socket }) {
+  const [message, setMessage] = useState("")
+
+  const sendMessage = (e) => {
+    e.preventDefault()
+
+    if(message) {
+      const newChat = {
+        author: localStorage.getItem("username"),
+        message: message
+      };
+
+      socket.emit("new_chat", newChat)
+
+      setMessage("")
+    }
+  }
+
   return (
     <>
   {/* component */}
@@ -16,11 +33,15 @@ export default function ChatRoom() {
       <div className="relative flex">
         <input
           type="text"
+          name="message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
           placeholder="Type A Message..."
           className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-2 bg-gray-200 rounded-md py-3"
         />
         <div className="absolute right-0 items-center inset-y-0 hidden sm:flex">
           <button
+            onClick={sendMessage}
             type="button"
             className="inline-flex items-center justify-center rounded-lg px-2 py-2 mr-2 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"
           >
