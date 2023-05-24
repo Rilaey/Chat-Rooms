@@ -16,6 +16,11 @@ const io = require("socket.io")(server, {
 // io events
 io.on("connection", (socket) => {
   console.log("a user connected");
+
+  // listen for user disconnects
+  socket.on("disconnect", () => {
+    console.log("a user disconnected");
+  })
 });
 
 server.listen(port, () => {
