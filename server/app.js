@@ -21,6 +21,11 @@ io.on("connection", (socket) => {
     io.emit("new_chat", data);
   })
 
+  socket.on("new_user", (data) => {
+    const message = `Welcome to room ${data.room}, ${data.username}!`;
+    io.emit("new_chat", { author: "ChatBot", message });
+  })
+
   // listen for user disconnects
   socket.on("disconnect", () => {
     console.log("a user disconnected");

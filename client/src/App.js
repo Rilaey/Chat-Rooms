@@ -9,8 +9,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='chat' element={<ChatRoom  socket={socket}/>} />
+        <Route path='/' element={<Home socket={socket} />} />
+        <Route path='/chat/:room' element={<ChatRoom  socket={socket}/>} />
       </Routes>
     </BrowserRouter>
   );
