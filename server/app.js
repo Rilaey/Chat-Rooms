@@ -18,7 +18,7 @@ io.on("connection", (socket) => {
   console.log("a user connected");
 
   socket.on("new_chat", (data) => {
-    console.log(data)
+    io.emit("new_chat", data);
   })
 
   // listen for user disconnects
