@@ -8,9 +8,11 @@ export default function Home({ socket }) {
   const navigate = useNavigate();
 
   const enterRoom = () => {
+    localStorage.setItem("username", username)
+
     if(username !== "" && room !== "") {
       const newUser = {
-        username,
+        username: localStorage.getItem("username"),
         room
       }
 
