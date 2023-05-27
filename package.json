@@ -4,7 +4,7 @@
   "description": "tba",
   "main": "index.js",
   "scripts": {
-    "start": "cd server && node app.js",
+    "start": "node server/app.js",
     "dev": "concurrently \"cd server && nodemon app.js\" \"cd client && npm start\"",
     "install": "concurrently \"cd server && npm install\" \"cd client && npm install\"",
     "build": "cd client && npm run build"
