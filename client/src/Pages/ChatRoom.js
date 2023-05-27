@@ -5,9 +5,7 @@ export default function ChatRoom({ socket }) {
   const [messages, setMessages] = useState([]);
   const bottomRef = useRef(null);
 
-  const sendMessage = (e) => {
-    e.preventDefault();
-
+  const sendMessage = () => {
     if (message) {
       const newChat = {
         author: localStorage.getItem("username"),
@@ -20,18 +18,25 @@ export default function ChatRoom({ socket }) {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      sendMessage();
+    }
+  };
+
   useEffect(() => {
     socket.on("new_chat", (newMessage) => {
       setMessages((prevMessages) => [...prevMessages, newMessage]);
     });
 
     return () => {
-      socket.off('new_chat');
+      socket.off("new_chat");
     };
   }, [socket]);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   return (
@@ -91,6 +96,7 @@ export default function ChatRoom({ socket }) {
               name="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
+              onKeyDown={handleKeyDown} // Handle "Enter" key press
               placeholder="Type A Message..."
               className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-2 bg-gray-200 rounded-md py-3"
             />
