@@ -4,7 +4,10 @@
   "description": "tba",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"cd server && nodemon app.js\" \"cd client && npm start\""
+    "start": "node server/server.js",
+    "dev": "concurrently \"cd server && nodemon app.js\" \"cd client && npm start\"",
+    "install": "concurrently \"cd server && npm install\" \"cd client && npm install\"",
+    "build": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
