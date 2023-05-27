@@ -1,7 +1,7 @@
 const express = require("express");
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 // create http server with the express app
 const server = require("http").createServer(app);
