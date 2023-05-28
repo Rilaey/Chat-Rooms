@@ -3,6 +3,17 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 8080;
 
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+}
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
+
 // create http server with the express app
 const server = require("http").createServer(app);
 
@@ -11,14 +22,6 @@ const io = require("socket.io")(server, {
   cors: {
     origin: "*"
   }
-});
-
-app.get("/*", (req, res) => {
-  res.sendFile(__dirname + "/../client/build/index.html", (err) => {
-    if (err) {
-      res.status(500).json(err);
-    }
-  });
 });
 
 // io events
