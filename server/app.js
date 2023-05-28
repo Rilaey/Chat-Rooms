@@ -14,13 +14,12 @@ const io = require("socket.io")(server, {
 });
 
 app.get("/*", (req, res) => {
-  res.sendFile(__dirname, "../client/build/index.html"),
-    (err) => {
-      if(err) {
-        res.status(500).json(err)
-      }
+  res.sendFile(__dirname + "../client/build/index.html", (err) => {
+    if (err) {
+      res.status(500).json(err);
     }
-})
+  });
+});
 
 // io events
 io.on("connection", (socket) => {
