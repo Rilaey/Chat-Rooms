@@ -14,7 +14,7 @@ const io = require("socket.io")(server, {
 });
 
 app.get("/*", (req, res) => {
-  res.sendFile(__dirname + "../client/build/index.html", (err) => {
+  res.sendFile(__dirname + "/../client/build/index.html", (err) => {
     if (err) {
       res.status(500).json(err);
     }
