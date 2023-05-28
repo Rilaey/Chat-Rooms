@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -30,17 +31,17 @@ io.on("connection", (socket) => {
 
   socket.on("new_chat", (data) => {
     io.emit("new_chat", data);
-  })
+  });
 
   socket.on("new_user", (data) => {
     const message = `Welcome to room ${data.room}, ${data.username}!`;
     io.emit("new_chat", { author: "ChatBot", message });
-  })
+  });
 
   // listen for user disconnects
   socket.on("disconnect", () => {
     console.log("a user disconnected");
-  })
+  });
 });
 
 server.listen(port, () => {
