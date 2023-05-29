@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/app.js",
-    "dev": "concurrently \"cd server && nodemon app.js\" \"cd client && npm start\"",
-    "install": "concurrently \"cd server && npm install\" \"cd client && npm install\"",
+    "dev": "concurrently \"cd server && node app.js\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
     "build": "cd client && npm run build"
   },
   "repository": {
