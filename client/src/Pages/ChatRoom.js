@@ -44,7 +44,7 @@ export default function ChatRoom({ socket }) {
       <div className="flex-1 p-2 sm:p-6 justify-between flex flex-col h-screen">
         <div
           id="messages"
-          className="flex flex-col space-y-4 p-3 overflow-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"
+          className="flex flex-col space-y-4 p-3 overflow-X-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"
         >
           {messages.map((message, index) => (
             <div
