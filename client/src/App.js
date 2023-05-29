@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './Pages/Home';
 import ChatRoom from './Pages/ChatRoom';
 
-const socket = io.connect("http://localhost:8080/");
+const socket = io();
 
 function App() {
   return (
